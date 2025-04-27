@@ -1,0 +1,30 @@
+stages:
+  - build_and_test
+
+build_and_test:
+  stage: build_and_test
+  image: ubuntu:latest
+  before_script:
+    - apt-get update && apt-get install -y doxygen python3 git
+
+  script:
+    - echo "Cloning grpc repository"
+    - git clone https://github.com/nikhilc89/grpc
+    - cd grpc
+    - git checkout Pipelinec
+    
+    - echo "Running Doxygen to generate documentation"
+    - doxygen doxygen_config
+    
+    - cd ..
+    - echo "Cloning doxygen_parser repository"
+    - git clone https://github.com/nikhilc89/doxygen_parser
+    - cd doxygen_parser
+    
+    - echo "Running the Python script on the warnings file"
+    - python3 doxygen_parser.py ../grpc/doxygen_warnings.log
+    
+  artifacts:
+    paths:
+      - doxygen_parser/doxygen_warnings.csv
+    expire_in: 1 week
