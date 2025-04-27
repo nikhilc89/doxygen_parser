@@ -13,9 +13,10 @@ python3 doxygen_parser.py doxygen_warnings.log
 ## What is the advantage of using LFS?
 Git Large File Storage (LFS) is designed to store large files more efficiently in Git repositories. The main advantages of using LFS for a repository, which contains binaries, are:
 
-Reduced Repository Size: LFS stores large binary files outside the main repository, significantly reducing the size of the repository. This improves performance when cloning or pulling the repository.
-Efficient Versioning of Large Files: Git LFS allows large binary files to be versioned more effectively. Instead of storing the entire binary file in each commit, it stores only a pointer to the file, saving space.
-Faster Cloning: By not storing large files directly in Git, LFS speeds up repository cloning and checkout, especially for users who don't need the large files immediately.
+- Reduced Repository Size: LFS stores large binary files outside the main repository, significantly reducing the size of the repository. This improves performance when cloning or pulling the repository.
+- Efficient Versioning of Large Files: Git LFS allows large binary files to be versioned more effectively. Instead of storing the entire binary file in each commit, it stores only a pointer to the file, saving space.
+- Faster Cloning: By not storing large files directly in Git, LFS speeds up repository cloning and checkout, especially for users who don't need the large files immediately.
+
 *(Answer taken from online)*
 
 ## How to adjust this repository to support LFS?
